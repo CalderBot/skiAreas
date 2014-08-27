@@ -1,0 +1,17 @@
+// -------------- CHANGELOG -------------------------
+August 26th, Calder:
+1. Commented out the console.log's in "DISPLAY SKI AREA INFO (on hover)" section of index.html
+2. Compiled the jade files to html (this is required for phonegap) (Note: phonegap also requires the startup page to be index.html)
+3. Made a list of ski areas, and a list of states... these are global variables saved in skiAreaList
+4. Added helper functions for filtering skiAreaList by state.
+
+
+
+
+
+// ----------------- TODO -----------------------
+1. Replace cdn scripts with minified files so that the app works 100% offline?
+2. Hover-stats functionality (it's an excellent idea!)
+3. Drop-down menu to select state (should this just be in a corner of the main page, or should it be on a separate landing page that explains the app and stuff?)
+4. Come up with three names each for the app
+5. Phonegap it.
