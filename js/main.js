@@ -1,5 +1,11 @@
+function render(sortby) {
 
-$(function() {
+	// since render can get called multiple times,
+	// empty out the svg each time
+	$('.main-svg').remove();
+
+	// sort by awesomeness if (for some reason) no sortby is passed
+	var sortby = sortby || 'awesome';
 
 	// get window height so SVG is full-height
 	var WINDOWHEIGHT = parseInt(window.innerHeight);
@@ -28,7 +34,7 @@ $(function() {
 	console.log("number of areas in "+selectedState, data.length);
 
 	// sort array by snowfall
-	if(data.length===0) alert("no ski areas in this state!");
+	if (data.length === 0) alert("no ski areas in this state!");
 	else var sortedSnowfall = data.sort(function(a,b) {return a.yearlySnowfall - b.yearlySnowfall; });
 
 	// number value of lowest snowfall is first item in sorted array
@@ -87,9 +93,27 @@ $(function() {
 
 	// sort array by `awesomeness` so mtns are in order
 	// ... left to right, by most to least awesome
-	data.sort(function(a,b){
-		return b.awesomeness - a.awesomeness;
-	})
+	if (sortby === 'awesome') {
+		data.sort(function(a,b) {
+			return b.awesomeness - a.awesomeness;
+		})
+	}
+	else if (sortby === 'snowfall') {
+		data.sort(function(a,b) {
+			return b.yearlySnowfall - a.yearlySnowfall;
+		});
+	}
+	else if (sortby === 'difficult') {
+		data.sort(function(a,b) {
+			console.log(b)
+			return (b.advanced + b.expert) - (a.advanced + a.expert);
+		})
+	}
+	else if (sortby === 'area') {
+		data.sort(function(a,b) {
+			return b.skiableAcres - a.skiableAcres;
+		})
+	}
 
 	// SVG points to make triangles
 	// ... save to data[i]
@@ -105,6 +129,7 @@ $(function() {
 
 	var svg = d3.select('body')
 		.append('svg')
+		.attr('class', 'main-svg')
 		.attr('width', SVG_WIDTH)
 		.attr('height', SVG_HEIGHT)
 
@@ -193,22 +218,23 @@ $(function() {
 						var x = Math.random();
 						// radius is usually a random number between 3 and 6
 						if (x > 0.02) {
-							return Math.round(Math.random()*3+3)
+							return Math.round(Math.random()*3+2)
 						}
 						// rarely...
-						else if (x > .005 ) {
+						else if (x > .0005 ) {
+							return 7
+						}
+						else if (x > .000005) {
+							return 10
+						}
+						else if (x > .0000001) {
 							return 15
 						}
-						else if (x > .0005) {
-							return 20
-						}
-						else if (x > .0001) {
-							return 40
-						}
-						else {
-							// 1 in 100000 snowflakes... 
-							return 600
-						}
+						// snow can start sooner w/o big flakes... :(
+						// else {
+						// 	// 1 in 10000000 snowflakes... 
+						// 	return 600
+						// }
 					})
 					.attr('cx', function() {
 						// snow falls at any random x-value within its mountain's width
@@ -217,7 +243,7 @@ $(function() {
 						return (XSCALE * j + randomWidth)
 					})
 					// start snow at -600 px, since huge snowflake has that radius
-					.attr('cy', '-600')
+					.attr('cy', '-40')
 					.transition()
 					.ease('linear')
 					.duration(interval)
@@ -239,15 +265,26 @@ $(function() {
 
 		}
 	}, interval/2)
+}
+
+
+$(function() {
+
+	render('awesome');
 	
-	// put 'least awesome' text at far right
+	// ------------------------ PUT LAST .sink LABEL AT FAR RIGHT ------------------------
 	var DOCWIDTH = parseInt($(document).width());
-	$('.key.sink').width(DOCWIDTH - 400)
+	$('.key.sink').width(DOCWIDTH - 450)
 	$('.sink.right').css('left', DOCWIDTH - 180 + 'px')
 
+	// ------------------------ FAKE <SELECT> MENUS ------------------------
+	$('.fake-select').change(function() {
+		var val = $(this).val();
+		render(val)
+		$('var').text(val)
+	});
+
 });
-
-
 
 
 

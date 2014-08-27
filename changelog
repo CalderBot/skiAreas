@@ -1,4 +1,12 @@
 // -------------- CHANGELOG -------------------------
+August 26th, Sebastian:
+1. Removed huge snow to make snow begin to fall sooner ... :(
+2. Put javascript files in /js/ and css+fonts in /style/
+3. Put jQuery & D3 in libs.js
+4. Offlined Google webfonts
+5. Renamed files so landing page could be index.
+6. Added sortby functionality
+
 August 26th, Calder:
 1. Commented out the console.log's in "DISPLAY SKI AREA INFO (on hover)" section of index.html
 2. Compiled the jade files to html (this is required for phonegap) (Note: phonegap also requires the startup page to be index.html)
@@ -10,8 +18,13 @@ August 26th, Calder:
 
 
 // ----------------- TODO -----------------------
-1. Replace cdn scripts with minified files so that the app works 100% offline?
-2. Hover-stats functionality (it's an excellent idea!)
-3. Drop-down menu to select state (should this just be in a corner of the main page, or should it be on a separate landing page that explains the app and stuff?)
-4. Come up with three names each for the app
-5. Phonegap it.
+* Hover-stats functionality (it's an excellent idea!)
+* Drop-down menu to select state (should this just be in a corner of the main page, or should it be on a separate landing page that explains the app and stuff?)
+* Come up with three names each for the app
+* Phonegap it.
+* Maybe: Scale everything down. (At iPhone-like heights, mountain names end up below the viewport.)
+
+
+
+// ----------------- DONE -----------------------
+* Replace cdn scripts with minified files so that the app works 100% offline?
