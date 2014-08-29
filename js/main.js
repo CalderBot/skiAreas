@@ -153,6 +153,7 @@ function render(sortby) {
 		});
 
 	// ------------------------ MAKE MOUNTAIN TITLE TEXT ------------------------
+	var YSHIFT = (WINDOWHEIGHT-100)/data.length;
 	var text = svg.selectAll('text')
 		.data(data)
 		.enter()
@@ -161,11 +162,11 @@ function render(sortby) {
 			return d.name
 		})
 		.attr('x', function(d, i) {
-			return XSCALE * i + (XSCALE/2)
+			return XSCALE * i +50
 		})
-		// each label will be 40px below the last to avoid stacking
+		// each label will be YSHIFT below the last to avoid stacking
 		.attr('y', function(d, i) {
-			return 40 * i + 100
+			return YSHIFT * i + 50
 		})
 		// css stuff...
 		.attr('font-family', 'Open Sans')

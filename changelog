@@ -1,4 +1,10 @@
 // -------------- CHANGELOG -------------------------
+August 28th
+1. Improved the ski area list.
+2. Ski Area names are now the colloqial name, like "Squaw Valley" instead of "Squaw Valley Ski Resort"
+3. Set the names to shift downwards by ~ windowheight/data.length
+4. Didn't master the phonegap yet.
+
 August 26th, Sebastian:
 1. Removed huge snow to make snow begin to fall sooner ... :(
 2. Put javascript files in /js/ and css+fonts in /style/
@@ -27,4 +33,5 @@ August 26th, Calder:
 
 
 // ----------------- DONE -----------------------
-* Replace cdn scripts with minified files so that the app works 100% offline?
+* Replace cdn scripts with minified files so that the app works 100% offline.
+* Three names: "Rank my ski area" "Rank my mountain" "All Ski Resorts"... these names are boring but maybe likely to show up in app store searches.  I'm gonna keep thinking.
