@@ -6,22 +6,38 @@
 		<link rel="stylesheet" href="style/main.css">
 	</head>
 	<body>
+		<header>
+			<label class="dropdown inline">
+	      <span class="left js-dropdown-val">Most awesome</span>
+				<svg width="8" height="7" class="icon-dropdown">
+	    		<polygon points="0, 2 8, 2 4, 7" class="white"></polygon>
+	    	</svg>
+	    	<select class="sortby">
+					<option value="awesome" data-adjective="Most awesome">Most Awesome</option>
+					<option value="snowfall" data-adjective="Snowiest">Most Snowfall</option>
+					<option value="difficult" data-adjective="Most difficult">Most Difficult</option>
+					<option value="skiable acres" data-adjective="Largest">Most Skiable Acres</option>
+				</select>
+	    </label>
+			<span class="header-text">ski resorts in</span>
+			<label class="dropdown inline">
+				<span class="left js-dropdown-val">California</span>
+				<svg width="8" height="7" class="icon-dropdown">
+	    		<polygon points="0, 2 8, 2 4, 7" class="white"></polygon>
+	    	</svg>
+				<select class="state-select">
+					<option value="California">California</option>
+					<option value="Colorado">Colorado</option>
+					<option value="Nevada">Nevada</option>
+					<option value="Utah">Utah</option>
+				</select>
+			</label>
+		</header>
 		<div class="key"></div>
-		<label>easy</label>
-		<label class="right">expert</label>
-		<div class="key sink"></div>
-		<label class="sink dropdown">
-      <span class="left">most <var>awesome</var></span>
-			<svg width="8" height="7" class="icon-dropdown">
-    		<polygon points="0, 2 8, 2 4, 7" class="white"></polygon>
-    	</svg>
-    	<select class="fake-select">
-				<option value="awesome">Most Awesome</option>
-				<option value="snowfall">Most Snowfall</option>
-				<option value="difficult">Most Difficult</option>
-				<option value="area">Most Skiable Area</option>
-			</select>
-    </label>
+		<label class="key-label">easy</label>
+		<label class="key-label right">expert</label>
+		<!-- <div class="key sink"></div> -->
+		<label class="sink">most <var>awesome</var></label>
 		<label class="sink right">least <var>awesome</var></label>
 
 		<script src="js/libs.js"></script>

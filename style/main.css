@@ -16,6 +16,7 @@
 
 /* ------------------------ HTML ------------------------ */
 
+
 body {
 	background: #ccc;
 	/*background: #134;*/ /* nighttime mode */
@@ -32,6 +33,26 @@ h1 {
 	margin: 200px auto;
 	text-align: center;
 	text-transform: uppercase;
+}
+
+header {
+	background: rgba(0,0,0,.8);
+	   -moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	color: #fff;
+	height: 44px;
+	padding: 7px 0 1px 0;
+	position: fixed;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+
+.header-text {
+	font-weight: 400;
+	position: relative;
+	top: -10px;
 }
 
 var {
@@ -80,6 +101,11 @@ label {
 	left: 0;
 	right: 0;
 	position: fixed;
+	top: 44px;
+}
+
+.key-label {
+	top: 44px;
 }
 
 /* .sink sinks things to the bottom, like the "most awesome" text */
@@ -113,11 +139,19 @@ label {
 
 /* fake dropdown <label> styles */
 .dropdown {
-	border: 1px solid #fff; /* fallback for old browsers */
-	border: 1px solid rgba(255,255,255,.5);
+	/* border: 1px solid #fff;  fallback for old browsers */
+	/*border: 1px solid rgba(255,255,255,.5);*/
 	border-radius: 3px;
-	padding: 5px 10px;
-	bottom: 20px;
+	/*padding: 5px 10px;*/
+	padding: 5px;
+	/*bottom: 20px;*/
+}
+
+label.dropdown.inline {
+	display: inline-block;
+	margin: 0 20px;
+	left: 0;
+	position: relative;
 }
 
 /* Fake select */
@@ -151,7 +185,9 @@ label {
 
 .icon-dropdown {
 	float: right;
-	margin: 2px 0;
+	position: relative;
+	top: 3px;
+	margin: 2px 0 2px 6px;
 }
 
 .sink .icon-dropdown {

@@ -1,4 +1,11 @@
 // -------------- CHANGELOG -------------------------
+August 29th
+1. Added header (Google says 44px is iPhone-standard header height)
+2. Can select states now (no "all" option yet)
+3. Use adjectives in dropdowns, but nouns on labels.
+	- eg. "Snowiest ski resorts..." in the dropdown 
+				"Most snowfall ... Least snowfall" in the labels
+
 August 28th
 1. Improved the ski area list.
 2. Ski Area names are now the colloqial name, like "Squaw Valley" instead of "Squaw Valley Ski Resort"
@@ -27,7 +34,12 @@ August 26th, Calder:
 * Hover-stats functionality (it's an excellent idea!)
 * Drop-down menu to select state (should this just be in a corner of the main page, or should it be on a separate landing page that explains the app and stuff?)
 * Come up with three names each for the app
+	- And if possible, make the name something that could be used in .header-text (instead of "ski resorts in"). It would be cool if it played nicely with that, so it would kind of work as a functional title.
 * Phonegap it.
+* Adjust mountain name x-coordinate (see email for screenshot)
+* (Maybe) populate states dropdown menu programmatically. If not, I just need to fill in each state that has ski areas by hand.
+* Fix snowfall drop x-coordinate. (Most evident on states like NV).
+	- Currently, snow only falls on the left half of the mountain.
 * Maybe: Scale everything down. (At iPhone-like heights, mountain names end up below the viewport.)
 
 

@@ -1,4 +1,4 @@
-function render(sortby) {
+function render(sortby, state) {
 
 	// since render can get called multiple times,
 	// empty out the svg each time
@@ -26,12 +26,12 @@ function render(sortby) {
 		return skiAreaList.filter( function(skiArea){return skiArea.state === state;} )
 	}
 	
-	console.log("number of areas: ", data.length)
+	// console.log("number of areas: ", data.length)
 	// Type in whatever state you want!
-	var selectedState = "California"
+	var selectedState = state || "California"
 	data = selectByState(data,selectedState);
-	console.log("ski areas in "+selectedState, data);
-	console.log("number of areas in "+selectedState, data.length);
+	// console.log("ski areas in "+selectedState, data);
+	// console.log("number of areas in "+selectedState, data.length);
 
 	// sort array by snowfall
 	if (data.length === 0) alert("no ski areas in this state!");
@@ -105,11 +105,11 @@ function render(sortby) {
 	}
 	else if (sortby === 'difficult') {
 		data.sort(function(a,b) {
-			console.log(b)
+			// console.log(b)
 			return (b.advanced + b.expert) - (a.advanced + a.expert);
 		})
 	}
-	else if (sortby === 'area') {
+	else if (sortby === 'skiable acres') {
 		data.sort(function(a,b) {
 			return b.skiableAcres - a.skiableAcres;
 		})
@@ -153,7 +153,7 @@ function render(sortby) {
 		});
 
 	// ------------------------ MAKE MOUNTAIN TITLE TEXT ------------------------
-	var YSHIFT = (WINDOWHEIGHT-100)/data.length;
+	var YSHIFT = (WINDOWHEIGHT-150)/data.length;
 	var text = svg.selectAll('text')
 		.data(data)
 		.enter()
@@ -166,7 +166,7 @@ function render(sortby) {
 		})
 		// each label will be YSHIFT below the last to avoid stacking
 		.attr('y', function(d, i) {
-			return YSHIFT * i + 50
+			return YSHIFT * i + 100
 		})
 		// css stuff...
 		.attr('font-family', 'Open Sans')
@@ -271,7 +271,7 @@ function render(sortby) {
 
 $(function() {
 
-	render('awesome');
+	render('awesome', 'California');
 	
 	// ------------------------ PUT LAST .sink LABEL AT FAR RIGHT ------------------------
 	var DOCWIDTH = parseInt($(document).width());
@@ -279,11 +279,25 @@ $(function() {
 	$('.sink.right').css('left', DOCWIDTH - 180 + 'px')
 
 	// ------------------------ FAKE <SELECT> MENUS ------------------------
-	$('.fake-select').change(function() {
-		var val = $(this).val();
-		render(val)
-		$('var').text(val)
+	// TODO: merge the two .change functions into one
+	$('.sortby').change(function() {
+		var sortby = $(this).val();
+		var span = $(this).siblings('.js-dropdown-val');
+		var selected = $(this).children(':selected');
+		var adj = selected.attr('data-adjective');
+		var state = $('.state-select').val();
+		render(sortby, state)
+		$('var').text(sortby)
+		span.text(adj);
 	});
+
+	$('.state-select').change(function() {
+		var state = $(this).val();
+		var span = $(this).siblings('.js-dropdown-val');
+		var sortby = $('.sortby').val();
+		render(sortby, state)
+		span.text(state)
+	})
 
 });
 
