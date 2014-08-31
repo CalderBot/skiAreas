@@ -1,3 +1,27 @@
+// returns the list of ski areas in a given state:
+function selectByState(skiAreaList,state){
+	return skiAreaList.filter( function(skiArea){return skiArea.state === state;} )
+}
+
+// Fills the drop down list of states
+function loadStates(skiAreaList){
+	if( $(".state-select").children().size() > 0 ) return;
+
+	for (var i = 0; i < states.length; i++) {
+		if( selectByState(skiAreaList,states[i]).length>0 ){
+			$(".state-select").append("<option value="+states[i]+">"+states[i]+"</option>");
+		}	
+	}
+}
+
+// returns true for ski areas that have enough data for meaningful visualization
+function isComplete(area) {
+	if (area.expert === undefined) area.expert = 0;
+	if (area.advanced === undefined) area.advanced = 0;
+	if (area.yearlySnowfall === undefined ) area.yearlySnowfall = 0;
+	return ( area.state && area.top && area.base && area.skiableAcres );
+}
+
 function render(sortby, state) {
 
 	// since render can get called multiple times,
@@ -10,28 +34,14 @@ function render(sortby, state) {
 	// get window height so SVG is full-height
 	var WINDOWHEIGHT = parseInt(window.innerHeight);
 
-	// returns true for ski areas that have enough data for meaningful visualization
-	function isComplete(area) {
-		if (area.expert === undefined) area.expert = 0;
-		if (area.advanced === undefined) area.advanced = 0;
-		if (area.yearlySnowfall === undefined ) area.yearlySnowfall = 0;
-		return ( area.state && area.top && area.base && area.skiableAcres );
-	}
 
 	// set data to filtered array
 	var data = skiAreaList.filter(isComplete)
 
-	// returns the list of ski areas in a given state:
-	function selectByState(skiAreaList,state){
-		return skiAreaList.filter( function(skiArea){return skiArea.state === state;} )
-	}
 	
 	// console.log("number of areas: ", data.length)
-	// Type in whatever state you want!
 	var selectedState = state || "California"
 	data = selectByState(data,selectedState);
-	// console.log("ski areas in "+selectedState, data);
-	// console.log("number of areas in "+selectedState, data.length);
 
 	// sort array by snowfall
 	if (data.length === 0) alert("no ski areas in this state!");
@@ -73,6 +83,7 @@ function render(sortby, state) {
 	var SVG_WIDTH = XSCALE * data.length + 100
 	var YHEIGHT = SVG_HEIGHT
 	var HEIGHTSCALE = .2
+	var SNOWBANDWIDTH = 0.2 // how wide the bando of snow is on each mountain
 
 	// FUNCTION TO DETERMINE HOW AWESOME EACH MOUNTAIN IS
 	//	... normalize numbers using constants
@@ -239,9 +250,10 @@ function render(sortby, state) {
 					})
 					.attr('cx', function() {
 						// snow falls at any random x-value within its mountain's width
-						var width = (XSCALE * data[j].skiableAcres)/((data[j].top-data[j].base))
-						var randomWidth = Math.random()*width
-						return (XSCALE * j + randomWidth)
+						var width = (2*XSCALE * data[j].skiableAcres)/((data[j].top-data[j].base));
+						var randomWidth = (Math.random()-0.5)*width; // random in range (-width/2,width/2) 
+						var mountainTop = j*XSCALE + width/2; 
+						return (mountainTop + SNOWBANDWIDTH*randomWidth);
 					})
 					// start snow at -600 px, since huge snowflake has that radius
 					.attr('cy', '-40')
@@ -266,7 +278,7 @@ function render(sortby, state) {
 
 		}
 	}, interval/2)
-}
+} // <-- end render()
 
 
 $(function() {
@@ -275,10 +287,14 @@ $(function() {
 	
 	// ------------------------ PUT LAST .sink LABEL AT FAR RIGHT ------------------------
 	var DOCWIDTH = parseInt($(document).width());
-	$('.key.sink').width(DOCWIDTH - 450)
-	$('.sink.right').css('left', DOCWIDTH - 180 + 'px')
+	$('.key .sink').width(DOCWIDTH - 450)
+	$('.sink .right').css('left', DOCWIDTH - 180 + 'px')
 
 	// ------------------------ FAKE <SELECT> MENUS ------------------------
+
+	// Load up the states drop down with all states that have 'visualizable' ski areas
+	loadStates(skiAreaList.filter(isComplete));
+
 	// TODO: merge the two .change functions into one
 	$('.sortby').change(function() {
 		var sortby = $(this).val();
