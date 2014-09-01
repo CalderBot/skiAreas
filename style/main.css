@@ -50,9 +50,25 @@ header {
 }
 
 .header-text {
-	font-weight: 400;
+	font-weight: 300;
 	position: relative;
 	top: -10px;
+}
+
+/* huh? */
+.huh {
+	background: transparent;
+	border: 1px solid rgba(255,255,255,.6);
+	border-radius: 50%;
+	color: #fff;
+	cursor: pointer;
+	font-weight: 600;
+	height: 22px;
+	outline: 0;
+	position: absolute;
+	right: 20px;
+	top: 10px;
+	width: 22px;
 }
 
 var {
