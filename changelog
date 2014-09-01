@@ -1,4 +1,9 @@
 // -------------- CHANGELOG -------------------------
+August 30th
+1. Added all states to drop down with jquery
+2. Fixed snow placement and added a parameter SNOWBANDWIDTH that controls how wide the band of snow is relative to the mountain width.
+3. Introduced a bu; the first time a state is selected it gives the "empty list" alert, but then it never does after that.  I am confused by this, because by definition I only add states to the drop down that have some ski areas.
+
 August 29th
 1. Added header (Google says 44px is iPhone-standard header height)
 2. Can select states now (no "all" option yet)
