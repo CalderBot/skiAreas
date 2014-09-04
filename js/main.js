@@ -17,12 +17,11 @@ function loadStates(skiAreaList){
 		}
 	}
 
-	// why doesn't this work?
-	// it should alphabetize the states <option>s
-	// currently kind of randomizes them.
-	// NOTE: the toArray() might be optional -- seems to work the same either way.
+	// Alphabetize <option>s
 	var sorted = $('.state-select').children().toArray().sort(function(a,b) {
-			return $(a).text() > $(b).text()
+			if ($(a).text() > $(b).text()) { return 1 }
+			else if ($(a).text() === $(b).text()) { return 0 }
+			else { return -1 }
 		})
 
 	$('.state-select').html(sorted)

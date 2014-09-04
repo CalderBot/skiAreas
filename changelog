@@ -4,7 +4,7 @@ September 3rd
 2. New key/legend at top
 3. Responsive non-wrapping header
 4. Fixed a bug that caused states with 2-word names to not load by changing the way loadStates() works and removing the array of state names, (side benefit: states without ski areas won't show up at all) but...
-5. Introduced a bug (see line 20 in main.js) where the states won't alphabetize
+--FIXED-- 5. Introduced a bug (see line 20 in main.js) where the states won't alphabetize
 
 August 30th
 1. Added all states to drop down with jquery
@@ -49,7 +49,6 @@ August 26th, Calder:
 	- And if possible, make the name something that could be used in .header-text (instead of "ski resorts in"). It would be cool if it played nicely with that, so it would kind of work as a functional title.
 * Phonegap it.
 * Make snowfall gaussian
-* Alphabetize state list
 * "Least skiable acres" should read "Fewest skiable acres" but the current method using <var> doesn't make that change easy.
 
 
@@ -63,6 +62,7 @@ August 26th, Calder:
 
 
 // ----------------- DONE -----------------------
+* Alphabetize state list
 * Fix minor problem: when page first loads, Claifornia is displayed, but option:"California" is not selected.  This causes some problems.
 * Maybe make the y-distance from mountain base to the black header correspond to 4500 ft. (That is slightly more than the most vertical of any mountain.)  As it stands, some mountains go off the top of the screen.
 * Currently, snow only falls on the left half of the mountain.

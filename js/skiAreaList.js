@@ -23,13 +23,13 @@ function listByKey(skiAreas,key){
 function listByKeyAndValue(skiAreas,key,value){
 	console.log("Areas with "+key+" = "+value, skiAreas.filter(function(area){return area[key]===value}))
 }
-howManyWithKey(skiAreaList,"name")
-howManyWithKey(skiAreaList,"state")
-howManyWithKeyAndValue(skiAreaList,"state","New Mexico")
+// howManyWithKey(skiAreaList,"name")
+// howManyWithKey(skiAreaList,"state")
+// howManyWithKeyAndValue(skiAreaList,"state","New Mexico")
 
-howManyWithKey(skiAreaList,"beginner")
-howManyWithKey(skiAreaList,"intermediate")
-howManyWithKey(skiAreaList,"advanced")
-howManyWithKey(skiAreaList,"expert")
+// howManyWithKey(skiAreaList,"beginner")
+// howManyWithKey(skiAreaList,"intermediate")
+// howManyWithKey(skiAreaList,"advanced")
+// howManyWithKey(skiAreaList,"expert")
 
-listByKey(skiAreaList,"beginner")
+// listByKey(skiAreaList,"beginner")
