@@ -324,7 +324,7 @@ $(function() {
 		var span = $(this).siblings('.js-dropdown-val');
 		var selected = $(this).children(':selected');
 		var adj = selected.attr('data-adjective');
-		var state = $('.state-select').val();
+		var state = $('.state-select').val().replace('-', ' ');
 		render(sortby, state)
 		$('var').text(sortby)
 		span.text(adj);

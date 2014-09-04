@@ -25,7 +25,7 @@ function listByKeyAndValue(skiAreas,key,value){
 }
 howManyWithKey(skiAreaList,"name")
 howManyWithKey(skiAreaList,"state")
-howManyWithKeyAndValue(skiAreaList,"state","Nevada")
+howManyWithKeyAndValue(skiAreaList,"state","New Mexico")
 
 howManyWithKey(skiAreaList,"beginner")
 howManyWithKey(skiAreaList,"intermediate")
