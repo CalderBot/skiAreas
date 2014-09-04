@@ -51,6 +51,7 @@ August 26th, Calder:
 * Phonegap it.
 * Make snowfall gaussian
 * Alphabetize state list
+* "Least skiable acres" should read "Fewest skiable acres" but the current method using <var> doesn't make that change easy.
 
 
 // ----------------- DONE -----------------------
