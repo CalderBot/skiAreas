@@ -1,4 +1,7 @@
 // -------------- CHANGELOG -------------------------
+September 4th
+1. Added setup for atan formula (line 205 -- wrong math, but the rotations by radians seem to work. transform-origin isn't working yet either.)
+
 September 3rd
 1. Began work on moving ski area names
 2. New key/legend at top

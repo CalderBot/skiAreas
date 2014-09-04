@@ -200,8 +200,9 @@ function render(sortby, state) {
 		.style('letter-spacing', '2px')
 		.style('font-size', '13px')
 		.attr('fill', '#fff')
-		.style('-webkit-transform', function() {
-			return 'rotate(' + Math.round(Math.random() * -60) + 'deg)'
+		.style('-webkit-transform', function(d) {
+			// math is wrong, but the right setup will be in a similar form
+			return 'rotate(' + Math.atan(d.top) / (d.skiableAcres / (d.top - d.base)) + 'rad)'
 		})
 		.style('-webkit-transform-origin', '50% 50%')
 
