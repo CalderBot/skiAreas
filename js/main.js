@@ -200,7 +200,10 @@ function render(sortby, state) {
 		.style('letter-spacing', '2px')
 		.style('font-size', '13px')
 		.attr('fill', '#fff')
-		.attr('style', '-webkit-transform: rotate(-45deg); -webkit-transform-origin: 50%;')
+		.style('-webkit-transform', function() {
+			return 'rotate(' + Math.round(Math.random() * -60) + 'deg)'
+		})
+		.style('-webkit-transform-origin', '50% 50%')
 
 		// ----------- ROTATION FORMULA -----------
 		// rotate by arc tan of height / half width
@@ -234,8 +237,11 @@ function render(sortby, state) {
 	setInterval(function() {
 		for (var j=0, len=data.length; j<len; j++) {
 
-			// snowflake constructor (kinda)
-			// makes circles with...
+			// `break;` is useful for debugging, since snowfall makes it hard to inspect elements on the page
+			// break;
+
+			// --- SNOWFLAKE CONSTRUCTOR (kinda) ---
+			//     makes circles with...
 			// 	- class 'snow'
 			// 	- random radius between 5 and 15
 			// 	- random x-coordinate (within mtn width)
