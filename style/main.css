@@ -47,6 +47,7 @@ header {
 	left: 0;
 	right: 0;
 	text-align: center;
+	white-space: nowrap; /* make sure state-select dropdown never wraps to new line! */
 }
 
 .header-text {
@@ -114,13 +115,13 @@ label {
 	background: linear-gradient(to left, rgba(0,66,189,0.7) 0%,rgba(0,204,51,0.7) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b30042bd', endColorstr='#b300cc33',GradientType=0 );*/
 
-	background: -moz-linear-gradient(left, rgba(237,122,0,0.7) 0%, rgba(115,0,204,0.7) 100%);
-	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(237,122,0,0.7)), color-stop(100%,rgba(115,0,204,0.7)));
-	background: -webkit-linear-gradient(left, rgba(237,122,0,0.7) 0%,rgba(115,0,204,0.7) 100%);
-	background: -o-linear-gradient(left, rgba(237,122,0,0.7) 0%,rgba(115,0,204,0.7) 100%);
-	background: -ms-linear-gradient(left, rgba(237,122,0,0.7) 0%,rgba(115,0,204,0.7) 100%);
-	background: linear-gradient(to right, rgba(237,122,0,0.7) 0%,rgba(115,0,204,0.7) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3ed7a00', endColorstr='#b37300cc',GradientType=1 );
+	background: -moz-linear-gradient(left, rgba(237,122,0,0.7) 0%, rgba(171,65,204,0.7) 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(237,122,0,0.7)), color-stop(100%,rgba(171,65,204,0.7)));
+	background: -webkit-linear-gradient(left, rgba(237,122,0,0.7) 0%,rgba(171,65,204,0.7) 100%);
+	background: -o-linear-gradient(left, rgba(237,122,0,0.7) 0%,rgba(171,65,204,0.7) 100%);
+	background: -ms-linear-gradient(left, rgba(237,122,0,0.7) 0%,rgba(171,65,204,0.7) 100%);
+	background: linear-gradient(to right, rgba(237,122,0,0.7) 0%,rgba(171,65,204,0.7) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3ed7a00', endColorstr='#b3ab41cc',GradientType=1 );
 
 	height: 20px;
 	left: 0;
