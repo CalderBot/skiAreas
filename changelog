@@ -45,13 +45,21 @@ August 26th, Calder:
 // ----------------- TODO -----------------------
 * put in formula A = triangle width/2, O = triangle height, angle to rotate is -atan(O/A) 
 * Understand why computer seems to work harder and harder as time goes on.
-* Hover-stats functionality (it's an excellent idea!)
 * Come up with three names each for the app
 	- And if possible, make the name something that could be used in .header-text (instead of "ski resorts in"). It would be cool if it played nicely with that, so it would kind of work as a functional title.
 * Phonegap it.
 * Make snowfall gaussian
 * Alphabetize state list
 * "Least skiable acres" should read "Fewest skiable acres" but the current method using <var> doesn't make that change easy.
+
+
+// ----------------- TODO/IDEAS (things that can be done after launch) -----------------------
+* Add helper text in modal to explain what "Awesomeness" means and why some ski areas may be missing
+	- A landing page for the app could also do this
+* Hover-stats functionality (it's an excellent idea!)
+* Option to view top ski areas in USA for any given sortby (instead of confining to one state at a time)
+	- Limit results to top 20? 30? ski areas
+* Allow users to submit missing data (downsides: would require a bit of manual work and internet connection)
 
 
 // ----------------- DONE -----------------------
