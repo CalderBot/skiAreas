@@ -19,7 +19,7 @@
 
 body {
 	background: #ccc;
-	/*background: #134;*/ /* nighttime mode */
+	/*background: #134;*/
 	color: #444;
 	font: 600 13px/1.5 'Open Sans';
 	margin: 0;
@@ -50,6 +50,7 @@ header {
 }
 
 .header-text {
+	display: none;
 	font-weight: 300;
 	position: relative;
 	top: -10px;
@@ -236,3 +237,8 @@ svg {
 	margin-bottom: -10px;
 }
 
+@media screen and (min-width : 500px) {
+	.header-text {
+		display: inline;
+	}
+}

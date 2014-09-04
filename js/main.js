@@ -37,7 +37,6 @@ function render(sortby, state) {
 
 	// set data to filtered array
 	var data = skiAreaList.filter(isComplete)
-
 	
 	// console.log("number of areas: ", data.length)
 	var selectedState = state || "California"
@@ -84,7 +83,7 @@ function render(sortby, state) {
 	var YHEIGHT = SVG_HEIGHT
 	var HEADERHEIGHT = 44
 	var HEIGHTSCALE = (YHEIGHT - HEADERHEIGHT) / 4500
-	var SNOWBANDWIDTH = 0.2 // how wide the bando of snow is on each mountain
+	var SNOWBANDWIDTH = 0.3 // how wide the band of snow is on each mountain
 
 	// FUNCTION TO DETERMINE HOW AWESOME EACH MOUNTAIN IS
 	//	... normalize numbers using constants
@@ -174,18 +173,25 @@ function render(sortby, state) {
 			return d.name
 		})
 		.attr('x', function(d, i) {
-			return XSCALE * i +50
+			return XSCALE * i + 100
 		})
 		// each label will be YSHIFT below the last to avoid stacking
-		.attr('y', function(d, i) {
-			return YSHIFT * i + 100
+		.attr('y', function(d) {
+			return YHEIGHT - 50
 		})
 		// css stuff...
 		.attr('font-family', 'Open Sans')
 		.style('text-transform', 'uppercase')
 		.style('letter-spacing', '2px')
 		.style('font-size', '13px')
-		.attr('fill', '#555')
+		.attr('fill', '#fff')
+		.attr('style', '-webkit-transform: rotate(-45deg); -webkit-transform-origin: 50%;')
+
+		// ----------- ROTATION FORMULA -----------
+		// rotate by arc tan of height / half width
+
+		// ----------- DARK COLOR? -----------
+		// .attr('fill', '#555')
 
 
 
@@ -314,7 +320,9 @@ $(function() {
 		var sortby = $('.sortby').val();
 		render(sortby, state)
 		span.text(state)
-	})
+	});
+
+	$('.state-select').find('option[value="California"]').prop('selected', true);
 
 });
 
