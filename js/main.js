@@ -5,14 +5,30 @@ function selectByState(skiAreaList,state){
 
 // Fills the drop down list of states
 function loadStates(skiAreaList){
-	if( $(".state-select").children().size() > 0 ) return;
+	
+	// don't fill the list if it already contains stuff
+	if ( $('.state-select').children().size() > 0 ) return;
 
-	for (var i = 0; i < states.length; i++) {
-		if( selectByState(skiAreaList,states[i]).length>0 ){
-			$(".state-select").append("<option value="+states[i]+">"+states[i]+"</option>");
-		}	
+	// append an <option> per state.
+	// NOTE: values cannot contain spaces, so we convert them to '-' and then convert them back to spaces later
+	for (var i=0, len=skiAreaList.length; i<len; i++) {
+		if ($('.state-select').has('option[value="' + skiAreaList[i].state.replace(' ', '-') + '"]').length === 0) {
+			$('.state-select').append('<option value=' + skiAreaList[i].state.replace(' ', '-') + '>' + skiAreaList[i].state + '</option>');
+		}
 	}
+
+	// why doesn't this work?
+	// it should alphabetize the states <option>s
+	// currently kind of randomizes them.
+	// NOTE: the toArray() might be optional -- seems to work the same either way.
+	var sorted = $('.state-select').children().toArray().sort(function(a,b) {
+			return $(a).text() > $(b).text()
+		})
+
+	$('.state-select').html(sorted)
+
 }
+
 
 // returns true for ski areas that have enough data for meaningful visualization
 function isComplete(area) {
@@ -262,7 +278,7 @@ function render(sortby, state) {
 						var mountainTop = j*XSCALE + width/2; 
 						return (mountainTop + SNOWBANDWIDTH*randomWidth);
 					})
-					// start snow at -600 px, since huge snowflake has that radius
+					// start snow offscreen
 					.attr('cy', '-40')
 					.transition()
 					.ease('linear')
@@ -315,7 +331,7 @@ $(function() {
 	});
 
 	$('.state-select').change(function() {
-		var state = $(this).val();
+		var state = $(this).val().replace('-', ' ');
 		var span = $(this).siblings('.js-dropdown-val');
 		var sortby = $('.sortby').val();
 		render(sortby, state)

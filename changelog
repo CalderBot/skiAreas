@@ -1,4 +1,11 @@
 // -------------- CHANGELOG -------------------------
+September 3rd
+1. Began work on moving ski area names
+2. New key/legend at top
+3. Responsive non-wrapping header
+4. Fixed a bug that caused states with 2-word names to not load by changing the way loadStates() works and removing the array of state names, but...
+5. Introduced a bug (see line 20 in main.js) where the states won't alphabetize
+
 August 30th
 1. Added all states to drop down with jquery
 2. Fixed snow placement and added a parameter SNOWBANDWIDTH that controls how wide the band of snow is relative to the mountain width.
@@ -43,6 +50,7 @@ August 26th, Calder:
 	- And if possible, make the name something that could be used in .header-text (instead of "ski resorts in"). It would be cool if it played nicely with that, so it would kind of work as a functional title.
 * Phonegap it.
 * Make snowfall gaussian
+* I read that using CSS transforms is easier on the computer than changing actual positions using "top" or, in this case the attribute "cy" on line 277. If crashing becomes an issue, this might help.
 
 
 
@@ -58,5 +66,9 @@ August 26th, Calder:
 * Drop-down menu to select state (should this just be in a corner of the main page, or should it be on a separate landing page that explains the app and stuff?)
 * Replace cdn scripts with minified files so that the app works 100% offline.
 * Three names: "Rank my ski area" "Rank my mountain" "All Ski Resorts"... these names are boring but maybe likely to show up in app store searches.  I'm gonna keep thinking.
-		Seb: One more idea. I'll keep thinking though
+		Seb: Random brainstorm for ideas... But I'll keep thinking too.
 			- Ski ReSort (get it?)
+			- SuperSexySkiSlopeSorter
+			- iSki
+			- SkiFall
+			- 

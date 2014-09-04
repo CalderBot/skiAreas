@@ -135,7 +135,7 @@ label {
 }
 
 /* .sink sinks things to the bottom, like the "most awesome" text */
-.sink {
+/*.sink {
 	bottom: 25px;
 	color: #fff;
 	font-size: 18px;
@@ -154,7 +154,7 @@ label {
 	left: 250px;
 	opacity: .5;
 }
-
+*/
 /* info boxes that appear when hovering over a mountain */
 .info {
 	background: red;
@@ -216,10 +216,10 @@ label.dropdown.inline {
 	margin: 2px 0 2px 6px;
 }
 
-.sink .icon-dropdown {
+/*.sink .icon-dropdown {
 	margin: 8px;
 }
-
+*/
 .icon {
 	fill: #444;
 }
