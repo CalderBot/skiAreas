@@ -82,7 +82,8 @@ function render(sortby, state) {
 	var WIDTHSCALE = 200
 	var SVG_WIDTH = XSCALE * data.length + 100
 	var YHEIGHT = SVG_HEIGHT
-	var HEIGHTSCALE = .2
+	var HEADERHEIGHT = 44
+	var HEIGHTSCALE = (YHEIGHT - HEADERHEIGHT) / 4500
 	var SNOWBANDWIDTH = 0.2 // how wide the bando of snow is on each mountain
 
 	// FUNCTION TO DETERMINE HOW AWESOME EACH MOUNTAIN IS
@@ -287,8 +288,8 @@ $(function() {
 	
 	// ------------------------ PUT LAST .sink LABEL AT FAR RIGHT ------------------------
 	var DOCWIDTH = parseInt($(document).width());
-	$('.key .sink').width(DOCWIDTH - 450)
-	$('.sink .right').css('left', DOCWIDTH - 180 + 'px')
+	$('.key.sink').width(DOCWIDTH - 450)
+	$('.sink.right').css('left', DOCWIDTH - 180 + 'px')
 
 	// ------------------------ FAKE <SELECT> MENUS ------------------------
 
