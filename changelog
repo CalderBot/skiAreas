@@ -36,17 +36,18 @@ August 26th, Calder:
 
 
 // ----------------- TODO -----------------------
+* put in formula A = triangle width/2, O = triangle height, angle to rotate is -atan(O/A) 
 * Understand why computer seems to work harder and harder as time goes on.
-* Fix minor problem: when  
 * Hover-stats functionality (it's an excellent idea!)
 * Come up with three names each for the app
 	- And if possible, make the name something that could be used in .header-text (instead of "ski resorts in"). It would be cool if it played nicely with that, so it would kind of work as a functional title.
 * Phonegap it.
-* Adjust mountain name x-coordinate (see email for screenshot)
+* Make snowfall gaussian
 
 
 
 // ----------------- DONE -----------------------
+* Fix minor problem: when page first loads, Claifornia is displayed, but option:"California" is not selected.  This causes some problems.
 * Maybe make the y-distance from mountain base to the black header correspond to 4500 ft. (That is slightly more than the most vertical of any mountain.)  As it stands, some mountains go off the top of the screen.
 * Currently, snow only falls on the left half of the mountain.
 * Maybe: Scale everything down. (At iPhone-like heights, mountain names end up below the viewport.)
