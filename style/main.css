@@ -237,7 +237,7 @@ svg {
 	margin-bottom: -10px;
 }
 
-@media screen and (min-width : 500px) {
+@media screen and (min-width : 580px) {
 	.header-text {
 		display: inline;
 	}
