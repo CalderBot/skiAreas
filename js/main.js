@@ -98,7 +98,7 @@ function render(sortby, state) {
 	var YHEIGHT = SVG_HEIGHT
 	var HEADERHEIGHT = 44
 	var HEIGHTSCALE = (YHEIGHT - HEADERHEIGHT) / 4500
-	var SNOWBANDWIDTH = 0.3 // how wide the band of snow is on each mountain
+	var SNOWBANDWIDTH = 1.5 // how wide the band of snow is on each mountain
 
 	// FUNCTION TO DETERMINE HOW AWESOME EACH MOUNTAIN IS
 	//	... normalize numbers using constants
@@ -179,7 +179,7 @@ function render(sortby, state) {
 		});
 
 	// ------------------------ MAKE MOUNTAIN TITLE TEXT ------------------------
-	var YSHIFT = (WINDOWHEIGHT-150)/data.length;
+	var YSHIFT = (WINDOWHEIGHT-200)/data.length;
 	var text = svg.selectAll('text')
 		.data(data)
 		.enter()
@@ -191,8 +191,8 @@ function render(sortby, state) {
 			return XSCALE * i + 100
 		})
 		// each label will be YSHIFT below the last to avoid stacking
-		.attr('y', function(d) {
-			return YHEIGHT - 50
+		.attr('y', function(d,i) {
+			return 200 + i*YSHIFT
 		})
 		// css stuff...
 		.attr('font-family', 'Open Sans')
@@ -200,11 +200,11 @@ function render(sortby, state) {
 		.style('letter-spacing', '2px')
 		.style('font-size', '13px')
 		.attr('fill', '#fff')
-		.style('-webkit-transform', function(d) {
-			// math is wrong, but the right setup will be in a similar form
-			return 'rotate(' + Math.atan(d.top) / (d.skiableAcres / (d.top - d.base)) + 'rad)'
-		})
-		.style('-webkit-transform-origin', '50% 50%')
+		// .style('-webkit-transform', function(d) {
+		// 	// math is wrong, but the right setup will be in a similar form
+		// 	return 'rotate(' + Math.atan(d.top) / (d.skiableAcres / (d.top - d.base)) + 'rad)'
+		// })
+		// .style('-webkit-transform-origin', '50% 50%')
 
 		// ----------- ROTATION FORMULA -----------
 		// rotate by arc tan of height / half width
@@ -280,7 +280,7 @@ function render(sortby, state) {
 					.attr('cx', function() {
 						// snow falls at any random x-value within its mountain's width
 						var width = (2*XSCALE * data[j].skiableAcres)/((data[j].top-data[j].base));
-						var randomWidth = (Math.random()-0.5)*width; // random in range (-width/2,width/2) 
+						var randomWidth = (Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()-3)*width/6; // random in range (-width/2,width/2) 
 						var mountainTop = j*XSCALE + width/2; 
 						return (mountainTop + SNOWBANDWIDTH*randomWidth);
 					})
