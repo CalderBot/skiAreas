@@ -2,7 +2,7 @@
 August 30th
 1. Added all states to drop down with jquery
 2. Fixed snow placement and added a parameter SNOWBANDWIDTH that controls how wide the band of snow is relative to the mountain width.
-3. Introduced a bu; the first time a state is selected it gives the "empty list" alert, but then it never does after that.  I am confused by this, because by definition I only add states to the drop down that have some ski areas.
+3. Introduced a bug: the first time a state is selected it gives the "empty list" alert, but then it never does after that.  I am confused by this, because by definition I only add states to the drop down that have some ski areas.
 
 August 29th
 1. Added header (Google says 44px is iPhone-standard header height)
@@ -37,18 +37,21 @@ August 26th, Calder:
 
 // ----------------- TODO -----------------------
 * Hover-stats functionality (it's an excellent idea!)
-* Drop-down menu to select state (should this just be in a corner of the main page, or should it be on a separate landing page that explains the app and stuff?)
+* "Least Awesome is at right of window, should be at rght of doc or body or something... and what about that line?"
+* Left side of left-most mountain is cut off.
+* Maybe make the y-distance from mountain base to the black header correspond to 4500 ft. (That is slightly more than the most vertical of any mountain.)  As it stands, some mountains go off the top of the screen.
 * Come up with three names each for the app
 	- And if possible, make the name something that could be used in .header-text (instead of "ski resorts in"). It would be cool if it played nicely with that, so it would kind of work as a functional title.
 * Phonegap it.
 * Adjust mountain name x-coordinate (see email for screenshot)
-* (Maybe) populate states dropdown menu programmatically. If not, I just need to fill in each state that has ski areas by hand.
-* Fix snowfall drop x-coordinate. (Most evident on states like NV).
 	- Currently, snow only falls on the left half of the mountain.
 * Maybe: Scale everything down. (At iPhone-like heights, mountain names end up below the viewport.)
 
 
 
 // ----------------- DONE -----------------------
+* Fix snowfall drop x-coordinate. (Most evident on states like NV).
+* (Maybe) populate states dropdown menu programmatically. If not, I just need to fill in each state that has ski areas by hand.
+* Drop-down menu to select state (should this just be in a corner of the main page, or should it be on a separate landing page that explains the app and stuff?)
 * Replace cdn scripts with minified files so that the app works 100% offline.
 * Three names: "Rank my ski area" "Rank my mountain" "All Ski Resorts"... these names are boring but maybe likely to show up in app store searches.  I'm gonna keep thinking.
