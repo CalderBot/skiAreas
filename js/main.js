@@ -180,7 +180,9 @@ function render(sortby, state) {
 		// ... more green = more easy
 		// ... 70% opacity
 		.attr('fill', function(d) {
-			return 'rgba(0, ' + Math.round( (100 - (d.advanced + d.expert)) * 2.55) + ',' + Math.round((d.advanced + d.expert) * 2.55) + ' , .7)'
+			return 'rgba(0, ' + Math.round( (100 - (d.advanced + d.expert)) * 2.55) + ',' + Math.round((d.advanced + d.expert) * 2.55) + ' , .8)'
+			// ---- COLOR EXPERIMENT ----
+			// return 'hsla(' + ((Math.round(d.advanced + d.expert)) * 1.5 + 100) % 360 + ' , 100%, 50%, .7)'
 		});
 
 	// ------------------------ MAKE MOUNTAIN TITLE TEXT ------------------------
@@ -225,7 +227,7 @@ function render(sortby, state) {
 		// rotate by arc tan of height / half width
 
 		// ----------- DARK COLOR? -----------
-		// .attr('fill', '#555')
+		.attr('fill', '#555')
 
 
 
