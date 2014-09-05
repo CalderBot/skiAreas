@@ -1,8 +1,14 @@
 // -------------- CHANGELOG -------------------------
+September 5th
+1. Just for fun, your current time now sets the background gradient colors. 
+	 (Shouldn't be hard to now change this to be based on current time in selected state.)
+
 September 4th
-1. Arctan formula works! (a problem: mountain titles can now overlap and go off the screen)
+1. Arctan formula works!
+	-- A problem: mountain titles can now overlap and go off the screen
+	-- Possible solution: Make text run up left side of mountain, and affix start of text to bottom of screen
+		 (Still may not work perfectly on screens with super-low height, and overlapping is still an issue.)
 	-- Math is a little bit off, since steepness currently affects distance of text from the mountain
-	-- With the entire transform commented out, I think legibility is better though (and if the `+ 40` is removed from line 199 it's still clear which name belongs to which mountain)
 2. Window resize re-renders svg
 3. Random opacity snow
 
@@ -66,7 +72,7 @@ August 26th, Calder:
 * Option to view top ski areas in USA for any given sortby (instead of confining to one state at a time)
 	- Limit results to top 20? 30? ski areas
 * Allow users to submit missing data (downsides: would require a bit of manual work and internet connection)
-
+* What if the background was the color of the current time zone in the selected state? So, at 6pm in California it would be sunset colored, and gradually get darker and darker until sunrise. (And, some SVG clouds could roll in, based on weather.org data. Ski areas with terrain parks could have animated snowboarders jumping about, and current daily snowfall from online snow reports could set an amount of snow on the mountain itself.)
 
 // ----------------- DONE -----------------------
 * Alphabetize state list

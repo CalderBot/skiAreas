@@ -227,7 +227,7 @@ function render(sortby, state) {
 		// rotate by arc tan of height / half width
 
 		// ----------- DARK COLOR? -----------
-		.attr('fill', '#555')
+		// .attr('fill', '#555')
 
 
 
@@ -375,6 +375,11 @@ $(function() {
 	$(window).resize(function() {
 		render(currentSortBy, currentState)
 	});
+
+	// someday this will correspond to state's time, not current time
+	var timeNow = new Date().getHours();
+	$('body').addClass('sky-gradient-' + timeNow);
+
 
 });
 
