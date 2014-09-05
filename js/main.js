@@ -1,3 +1,7 @@
+function radiansToDegrees(radian) {
+	return radian * (180 / Math.PI)
+}
+
 // returns the list of ski areas in a given state:
 function selectByState(skiAreaList,state){
 	return skiAreaList.filter( function(skiArea){return skiArea.state === state;} )
@@ -188,23 +192,29 @@ function render(sortby, state) {
 			return d.name
 		})
 		.attr('x', function(d, i) {
-			return XSCALE * i + 100
+			var halfwidth = (d.skiableAcres / (d.top - d.base)) * WIDTHSCALE;
+			return XSCALE * i + halfwidth + 40
 		})
 		// each label will be YSHIFT below the last to avoid stacking
-		.attr('y', function(d,i) {
-			return 200 + i*YSHIFT
+		.attr('y', function(d) {
+			return YHEIGHT - (d.top - d.base) * HEIGHTSCALE - 20
 		})
 		// css stuff...
 		.attr('font-family', 'Open Sans')
 		.style('text-transform', 'uppercase')
+		.style('border-bottom', '1px solid #fff')
 		.style('letter-spacing', '2px')
 		.style('font-size', '13px')
 		.attr('fill', '#fff')
-		// .style('-webkit-transform', function(d) {
-		// 	// math is wrong, but the right setup will be in a similar form
-		// 	return 'rotate(' + Math.atan(d.top) / (d.skiableAcres / (d.top - d.base)) + 'rad)'
-		// })
-		// .style('-webkit-transform-origin', '50% 50%')
+		.style('text-anchor', 'start')
+		.attr('transform', function(d,i) {
+			var halfwidth = (d.skiableAcres / (d.top - d.base)) * WIDTHSCALE;
+			var height = (d.top - d.base) * HEIGHTSCALE;
+			var angle = radiansToDegrees(Math.atan( height / halfwidth));
+			var x = Math.round(XSCALE * i + ((d.skiableAcres / (d.top - d.base)) * WIDTHSCALE))
+			var y = YHEIGHT - (d.top - d.base) * HEIGHTSCALE - 20
+			return 'rotate(' + angle + ', ' + x + ', ' + y + ')'
+		})
 
 		// ----------- ROTATION FORMULA -----------
 		// rotate by arc tan of height / half width
@@ -239,7 +249,7 @@ function render(sortby, state) {
 		for (var j=0, len=data.length; j<len; j++) {
 
 			// `break;` is useful for debugging, since snowfall makes it hard to inspect elements on the page
-			// break;
+			break;
 
 			// --- SNOWFLAKE CONSTRUCTOR (kinda) ---
 			//     makes circles with...
