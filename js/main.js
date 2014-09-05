@@ -3,6 +3,45 @@ function radiansToDegrees(radian) {
 	return radian * (180 / Math.PI)
 }
 
+function setTimeZone() {
+	
+	var timeOffset = -8;
+
+	if (timezones.PST.indexOf(currentState) > -1) {
+		currentTimeZone = 'PST';
+		timeOffset = -8;
+	}
+	else if (timezones.EST.indexOf(currentState) > -1) {
+		currentTimeZone = 'EST'
+		timeOffset = -5;
+	}
+	else if (timezones.MST.indexOf(currentState) > -1) {
+		currentTimeZone = 'MST'
+		timeOffset = -7;
+	}
+	else if (timezones.AKST.indexOf(currentState) > -1) {
+		currentTimeZone = 'AKST'
+		timeOffset = -9;
+	}
+	else if (timezones.HAST.indexOf(currentState) > -1) {
+		currentTimeZone = 'HAST'
+		timeOffset = -10;
+	}
+	else if (timezones.CST.indexOf(currentState) > -1) {
+		currentTimeZone = 'CST'
+		timeOffset = -6;
+	}
+	console.log(currentTimeZone)
+
+	// remove all classes from body (old gradient class)
+	$('body').removeClass();
+
+	// use UTC hours so that the offset is correct
+	var UTC = new Date().getUTCHours();
+	// must never be negative or greater than 24
+	$('body').addClass('sky-gradient-' + Math.abs((UTC + timeOffset + 1) % 24));
+
+}
 // returns the list of ski areas in a given state:
 function selectByState(skiAreaList,state){
 	return skiAreaList.filter( function(skiArea){return skiArea.state === state;} )
@@ -331,6 +370,7 @@ function render(sortby, state) {
 
 var currentState = 'California';
 var currentSortBy = 'awesome';
+var currentTimeZone = 'PST';
 
 $(function() {
 
@@ -366,6 +406,9 @@ $(function() {
 		var sortby = $('.sortby').val();
 		currentState = state;
 		currentSortBy = sortby;
+
+		setTimeZone();
+
 		render(sortby, state)
 		span.text(state)
 	});
@@ -376,10 +419,7 @@ $(function() {
 		render(currentSortBy, currentState)
 	});
 
-	// someday this will correspond to state's time, not current time
-	var timeNow = new Date().getHours();
-	$('body').addClass('sky-gradient-' + timeNow);
-
+	setTimeZone();
 
 });
 

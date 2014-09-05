@@ -72,7 +72,7 @@ August 26th, Calder:
 * Option to view top ski areas in USA for any given sortby (instead of confining to one state at a time)
 	- Limit results to top 20? 30? ski areas
 * Allow users to submit missing data (downsides: would require a bit of manual work and internet connection)
-* What if the background was the color of the current time zone in the selected state? So, at 6pm in California it would be sunset colored, and gradually get darker and darker until sunrise. (And, some SVG clouds could roll in, based on weather.org data. Ski areas with terrain parks could have animated snowboarders jumping about, and current daily snowfall from online snow reports could set an amount of snow on the mountain itself.)
+* (And, some SVG clouds could roll in, based on weather.org data. Ski areas with terrain parks could have animated snowboarders jumping about, and current daily snowfall from online snow reports could set an amount of snow on the mountain itself.)
 
 // ----------------- DONE -----------------------
 * Alphabetize state list
@@ -82,6 +82,7 @@ August 26th, Calder:
 * Maybe: Scale everything down. (At iPhone-like heights, mountain names end up below the viewport.)
 * "Least Awesome is at right of window, should be at rght of doc or body or something... and what about that line?"
 * Left side of left-most mountain is cut off.
+* What if the background was the color of the current time zone in the selected state? So, at 6pm in California it would be sunset colored, and gradually get darker and darker until sunrise.
 * Fix snowfall drop x-coordinate. (Most evident on states like NV).
 * (Maybe) populate states dropdown menu programmatically. If not, I just need to fill in each state that has ski areas by hand.
 * Drop-down menu to select state (should this just be in a corner of the main page, or should it be on a separate landing page that explains the app and stuff?)

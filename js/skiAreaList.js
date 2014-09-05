@@ -1,6 +1,13 @@
 // This is the list of states, for convenience:
 // var states = ["Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"]
-
+var timezones = {
+	PST: ['California', 'Washington', 'Oregon', 'Nevada', 'Idaho'],
+	MST: ['Arizona', 'Colorado', 'Montana', 'New Mexico', 'Oregon', 'South Dakota', 'Texas', 'Utah', 'Wyoming'],
+	CST: ['Alabama', 'Arkansas', 'Florida', 'Illinois', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',  'Minnesota', 'Mississippi', 'Missouri', 'Nebraska', 'North Dakota', 'Oklahoma', 'Tennessee', 'Texas', 'Wisconsin'],
+	EST: ['Connecticut', 'Delaware', 'Florida', 'Georgia', 'Indiana', 'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'New Hampshire', 'New Jersey', 'New York', 'North Carolina', 'Ohio', 'Pennsylvania', 'Rhode Island', 'South Carolina', 'Vermont', 'Virginia', 'West Virginia'],
+	AKST: ['Alaska'],
+	HAST: ['Hawaii']
+}
 
 // This is the ski area list.  
 // To regenerate it, use USSkiAreas, open localhost:4068... after about 30 seconds the page will fill with this list, which can be copy-pasted.
