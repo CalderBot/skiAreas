@@ -1,7 +1,6 @@
 // -------------- CHANGELOG -------------------------
 September 5th
-1. Just for fun, your current time now sets the background gradient colors. 
-	 (Shouldn't be hard to now change this to be based on current time in selected state.)
+1. Current time in the selected state sets the background gradient colors.
 
 September 4th
 1. Arctan formula works!
