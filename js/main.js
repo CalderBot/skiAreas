@@ -1,3 +1,4 @@
+// because d3 transform rotate syntax only works in degrees...
 function radiansToDegrees(radian) {
 	return radian * (180 / Math.PI)
 }
@@ -206,13 +207,17 @@ function render(sortby, state) {
 		.style('letter-spacing', '2px')
 		.style('font-size', '13px')
 		.attr('fill', '#fff')
+		// text-anchor values can be 'start', 'middle', or 'end'
 		.style('text-anchor', 'start')
+		// ------ ROTATE TEXT ABOUT CORRECT ORIGIN ------
+		// d3 rotation syntax: rotate(angle in degrees, x position in px, y position in px)
 		.attr('transform', function(d,i) {
 			var halfwidth = (d.skiableAcres / (d.top - d.base)) * WIDTHSCALE;
 			var height = (d.top - d.base) * HEIGHTSCALE;
-			var angle = radiansToDegrees(Math.atan( height / halfwidth));
-			var x = Math.round(XSCALE * i + ((d.skiableAcres / (d.top - d.base)) * WIDTHSCALE))
-			var y = YHEIGHT - (d.top - d.base) * HEIGHTSCALE - 20
+			var angle = radiansToDegrees(Math.atan(height / halfwidth));
+			var x = Math.round(XSCALE * i + halfwidth)
+			// 20 is just an aesthetic thing... looks better w/ offset
+			var y = YHEIGHT - height - 20
 			return 'rotate(' + angle + ', ' + x + ', ' + y + ')'
 		})
 
@@ -249,7 +254,7 @@ function render(sortby, state) {
 		for (var j=0, len=data.length; j<len; j++) {
 
 			// `break;` is useful for debugging, since snowfall makes it hard to inspect elements on the page
-			break;
+			// break;
 
 			// --- SNOWFLAKE CONSTRUCTOR (kinda) ---
 			//     makes circles with...
@@ -296,6 +301,9 @@ function render(sortby, state) {
 					})
 					// start snow offscreen
 					.attr('cy', '-40')
+					.style('opacity', function() {
+						return Math.random();
+					})
 					.transition()
 					.ease('linear')
 					.duration(interval)
@@ -319,6 +327,8 @@ function render(sortby, state) {
 	}, interval/2)
 } // <-- end render()
 
+var currentState = 'California';
+var currentSortBy = 'awesome';
 
 $(function() {
 
@@ -341,6 +351,8 @@ $(function() {
 		var selected = $(this).children(':selected');
 		var adj = selected.attr('data-adjective');
 		var state = $('.state-select').val().replace('-', ' ');
+		currentState = state;
+		currentSortBy = sortby;
 		render(sortby, state)
 		$('var').text(sortby)
 		span.text(adj);
@@ -350,11 +362,17 @@ $(function() {
 		var state = $(this).val().replace('-', ' ');
 		var span = $(this).siblings('.js-dropdown-val');
 		var sortby = $('.sortby').val();
+		currentState = state;
+		currentSortBy = sortby;
 		render(sortby, state)
 		span.text(state)
 	});
 
 	$('.state-select').find('option[value="California"]').prop('selected', true);
+
+	$(window).resize(function() {
+		render(currentSortBy, currentState)
+	});
 
 });
 

@@ -1,6 +1,9 @@
 // -------------- CHANGELOG -------------------------
 September 4th
 1. Arctan formula works! (a problem: mountain titles can now overlap and go off the screen)
+	-- Math is a little bit off, since steepness currently affects distance of text from the mountain
+2. Window resize re-renders svg
+3. Random opacity snow
 
 September 3rd
 1. Began work on moving ski area names
