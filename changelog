@@ -1,6 +1,11 @@
 // -------------- CHANGELOG -------------------------
+September 6th
+1. Updated text... I think its in fairly good shape now.  Added .svg{padding-left:30px} to avoid words getting cut off.
+2. Changed d.top-d.base to d.vertical since every mounntain with top-base has vert but not the other way.
+3.  
+
 September 5th
-1. Current time in the selected state sets the background gradient colors.
+1. Current time in the selected state sets the background gradient colors. RAD!!
 
 September 4th
 1. Arctan formula works!
@@ -8,8 +13,8 @@ September 4th
 	-- Possible solution: Make text run up left side of mountain, and affix start of text to bottom of screen
 		 (Still may not work perfectly on screens with super-low height, and overlapping is still an issue.)
 	-- Math is a little bit off, since steepness currently affects distance of text from the mountain
-2. Window resize re-renders svg
-3. Random opacity snow
+2. Window resize re-renders svg RAD!!
+3. Random opacity snow RAD!!
 
 September 3rd
 1. Began work on moving ski area names
@@ -55,13 +60,14 @@ August 26th, Calder:
 
 
 // ----------------- TODO -----------------------
-* put in formula A = triangle width/2, O = triangle height, angle to rotate is -atan(O/A) 
+* Make a 170x200 'logo.png', a 57x57 'icon-57.png', a 114x114 'icon-57-2x.png', a a 72x72 'icon-72.png', a 144x144 'icon-72-2x.png'
+* Put logo.png in skiAreas/www/img, put the others in skiAreas/res/icon/ios 
 * Understand why computer seems to work harder and harder as time goes on.
 * Come up with three names each for the app
 	- And if possible, make the name something that could be used in .header-text (instead of "ski resorts in"). It would be cool if it played nicely with that, so it would kind of work as a functional title.
 * Phonegap it.
-* Make snowfall gaussian
 * "Least skiable acres" should read "Fewest skiable acres" but the current method using <var> doesn't make that change easy.
+
 
 
 // ----------------- TODO/IDEAS (things that can be done after launch) -----------------------
@@ -74,6 +80,8 @@ August 26th, Calder:
 * (And, some SVG clouds could roll in, based on weather.org data. Ski areas with terrain parks could have animated snowboarders jumping about, and current daily snowfall from online snow reports could set an amount of snow on the mountain itself.)
 
 // ----------------- DONE -----------------------
+* Make snowfall gaussian (Actually I made it approximately Gaussian)
+* put in formula A = triangle width/2, O = triangle height, angle to rotate is -atan(O/A) 
 * Alphabetize state list
 * Fix minor problem: when page first loads, Claifornia is displayed, but option:"California" is not selected.  This causes some problems.
 * Maybe make the y-distance from mountain base to the black header correspond to 4500 ft. (That is slightly more than the most vertical of any mountain.)  As it stands, some mountains go off the top of the screen.

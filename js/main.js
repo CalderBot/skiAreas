@@ -31,12 +31,7 @@ function setTimeZone() {
 		currentTimeZone = 'CST'
 		timeOffset = -6;
 	}
-	else {
-		currentTimeZone = 'PST'
-		timeOffset = -8;
-	}
-	
-	console.log(currentTimeZone)
+	// console.log(currentTimeZone)
 
 	// remove all classes from body (old gradient class)
 	$('body').removeClass();
@@ -83,23 +78,23 @@ function isComplete(area) {
 	if (area.expert === undefined) area.expert = 0;
 	if (area.advanced === undefined) area.advanced = 0;
 	if (area.yearlySnowfall === undefined ) area.yearlySnowfall = 0;
-	return ( area.state && area.top && area.base && area.skiableAcres );
+	return ( area.state && area.vertical && area.skiableAcres );
 }
 
+// Main rendering function
 function render(sortby, state) {
 
 	// since render can get called multiple times,
 	// empty out the svg each time
 	$('.main-svg').remove();
 
-	// sort by awesomeness if (for some reason) no sortby is passed
+	// sort by awesomeness if no sortby is passed
 	var sortby = sortby || 'awesome';
 
 	// get window height so SVG is full-height
 	var WINDOWHEIGHT = parseInt(window.innerHeight);
 
-
-	// set data to filtered array
+	// Cut out ski ares that don't have enough info for meaningful visualization
 	var data = skiAreaList.filter(isComplete)
 	
 	// console.log("number of areas: ", data.length)
@@ -124,7 +119,7 @@ function render(sortby, state) {
 		for (var i=0; i<data.length; i++) {
 			data[i].snowfall = new Array(
 				Math.floor(
-					(data[i].yearlySnowfall - lowestSnow) * (data[i].skiableAcres / (data[i].top - data[i].base)) * SNOWCONSTANT + 1
+					(data[i].yearlySnowfall - lowestSnow) * (data[i].skiableAcres / data[i].vertical) * SNOWCONSTANT + 1
 				)
 			)
 		}
@@ -194,11 +189,11 @@ function render(sortby, state) {
 	// ... save to data[i]
 	// ... bottom left, bottom right, top center
 	for(i=0;i<data.length;i++){
-		var width = (2 * data[i].skiableAcres / (data[i].top - data[i].base)) * WIDTHSCALE;
+		var width = (2 * data[i].skiableAcres / data[i].vertical) * WIDTHSCALE;
 	  data[i].points=[
 		  {x: i * XSCALE, y: YHEIGHT },
 		  {x: i * XSCALE + width, y: YHEIGHT },
-		  {x: i * XSCALE + (width / 2), y: YHEIGHT - (data[i].top - data[i].base) * HEIGHTSCALE }
+		  {x: i * XSCALE + (width / 2), y: YHEIGHT - data[i].vertical * HEIGHTSCALE }
 	  ]
 	}
 
@@ -231,6 +226,7 @@ function render(sortby, state) {
 
 	// ------------------------ MAKE MOUNTAIN TITLE TEXT ------------------------
 	var YSHIFT = (WINDOWHEIGHT-200)/data.length;
+	var FONT_SIZE=8
 	var text = svg.selectAll('text')
 		.data(data)
 		.enter()
@@ -239,12 +235,12 @@ function render(sortby, state) {
 			return d.name
 		})
 		.attr('x', function(d, i) {
-			var halfwidth = (d.skiableAcres / (d.top - d.base)) * WIDTHSCALE;
-			return XSCALE * i + halfwidth + 40
+			var halfwidth = (d.skiableAcres / d.vertical) * WIDTHSCALE;
+			return XSCALE * i + Math.max(10,halfwidth - FONT_SIZE*d.name.length)
 		})
 		// each label will be YSHIFT below the last to avoid stacking
 		.attr('y', function(d) {
-			return YHEIGHT - (d.top - d.base) * HEIGHTSCALE - 20
+			return YHEIGHT -5
 		})
 		// css stuff...
 		.attr('font-family', 'Open Sans')
@@ -258,22 +254,14 @@ function render(sortby, state) {
 		// ------ ROTATE TEXT ABOUT CORRECT ORIGIN ------
 		// d3 rotation syntax: rotate(angle in degrees, x position in px, y position in px)
 		.attr('transform', function(d,i) {
-			var halfwidth = (d.skiableAcres / (d.top - d.base)) * WIDTHSCALE;
-			var height = (d.top - d.base) * HEIGHTSCALE;
-			var angle = radiansToDegrees(Math.atan(height / halfwidth));
-			var x = Math.round(XSCALE * i + halfwidth)
-			// 20 is just an aesthetic thing... looks better w/ offset
-			var y = YHEIGHT - height - 20
+			var halfwidth = (d.skiableAcres / d.vertical) * WIDTHSCALE;
+			var height = d.vertical * HEIGHTSCALE;
+			var angle = -radiansToDegrees(Math.atan(height / halfwidth));
+			var x = Math.round(XSCALE * i)
+			var y = YHEIGHT
 			return 'rotate(' + angle + ', ' + x + ', ' + y + ')'
 		})
-
-		// ----------- ROTATION FORMULA -----------
-		// rotate by arc tan of height / half width
-
-		// ----------- DARK COLOR? -----------
-		// .attr('fill', '#555')
-
-
+	
 
 	// ------------------------ DISPLAY SKI AREA INFO (on hover) ------------------------
 	var infoBox = d3.select('body')
@@ -294,7 +282,8 @@ function render(sortby, state) {
 
 	// ------------------------ MAKE SNOW FALL! ------------------------
 	var interval = 4000;
-
+	var SNOWING = true;
+if(SNOWING){
 	// for each mountain...
 	setInterval(function() {
 		for (var j=0, len=data.length; j<len; j++) {
@@ -371,6 +360,7 @@ function render(sortby, state) {
 
 		}
 	}, interval/2)
+}
 } // <-- end render()
 
 var currentState = 'California';

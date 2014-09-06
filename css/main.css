@@ -283,6 +283,7 @@ label.dropdown.inline {
 /* any value with magnitude greater than 5 will cause background to repeat */
 svg {
 	margin-bottom: -5px;
+	padding-left:30px;
 }
 
 @media screen and (min-width : 580px) {
