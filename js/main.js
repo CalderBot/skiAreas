@@ -31,6 +31,11 @@ function setTimeZone() {
 		currentTimeZone = 'CST'
 		timeOffset = -6;
 	}
+	else {
+		currentTimeZone = 'PST'
+		timeOffset = -8;
+	}
+	
 	console.log(currentTimeZone)
 
 	// remove all classes from body (old gradient class)
