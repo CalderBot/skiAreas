@@ -329,7 +329,7 @@ if(SNOWING){
 					})
 					.attr('cx', function() {
 						// snow falls at any random x-value within its mountain's width
-						var width = (2*XSCALE * data[j].skiableAcres)/((data[j].top-data[j].base));
+						var width = 2*XSCALE * data[j].skiableAcres/data[j].vertical;
 						var randomWidth = (Math.random()+Math.random()+Math.random()+Math.random()+Math.random()+Math.random()-3)*width/6; // random in range (-width/2,width/2) 
 						var mountainTop = j*XSCALE + width/2; 
 						return (mountainTop + SNOWBANDWIDTH*randomWidth);
